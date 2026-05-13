@@ -37,7 +37,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?= base_url('admin/materi') ?>" class="<?= url_is('admin/materi*') ? 'active' : '' ?>">
                     <i class="ph ph-books text-xl"></i>
                     Materi & Sertifikasi
                 </a>
