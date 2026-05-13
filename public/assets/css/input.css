@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-primary: #0369A1;        /* sky-700 (biru utama) */
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #38BDF8;      /* sky-400 (biru langit) */
+  --color-accent: #0EA5E9;         /* sky-500 */
+  --color-neutral: #1E3A5F;        /* biru gelap (sidebar) */
+  --color-base-100: #F8FAFC;       /* background terang */
+  --color-base-200: #E2E8F0;       /* border / zebra stripe */
+  --color-base-300: #CBD5E1;
+}
+

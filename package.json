@@ -1,0 +1,33 @@
+{
+  "name": "scratch",
+  "version": "1.0.0",
+  "description": "CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure. More information can be found at the [official site](https://codeigniter.com).",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i public/assets/css/input.css -o public/assets/css/output.css",
+    "watch": "tailwindcss -i public/assets/css/input.css -o public/assets/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titanmulyanto/zeveduacademy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/titanmulyanto/zeveduacademy/issues"
+  },
+  "homepage": "https://github.com/titanmulyanto/zeveduacademy#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "autoprefixer": "^10.5.0",
+    "daisyui": "^5.5.19",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.3.0"
+  }
+}
