@@ -16,16 +16,23 @@
         <ul class="flex-1 space-y-1">
             <li class="menu-title text-sky-400 opacity-60 mt-4">Main Menu</li>
             <li>
-                <a href="#" class="active">
+                <a href="<?= base_url('admin/dashboard') ?>" class="<?= url_is('admin/dashboard') ? 'active' : '' ?>">
                     <i class="ph ph-gauge text-xl"></i>
                     Dashboard
                 </a>
             </li>
             
             <li>
-                <a href="#">
+                <a href="<?= base_url('admin/users') ?>" class="<?= url_is('admin/users*') ? 'active' : '' ?>">
                     <i class="ph ph-users text-xl"></i>
                     Manajemen User
+                </a>
+            </li>
+
+            <li>
+                <a href="<?= base_url('admin/transactions') ?>" class="<?= url_is('admin/transactions*') ? 'active' : '' ?>">
+                    <i class="ph ph-hand-coins text-xl"></i>
+                    Daftar Transaksi
                 </a>
             </li>
 
