@@ -23,4 +23,7 @@ $routes->group('admin', function($routes) {
         $routes->get('faq', '\App\Controllers\Admin\CmsController::faq');
         $routes->get('testimoni', '\App\Controllers\Admin\CmsController::testimoni');
     });
+
+    $routes->get('sertifikat', '\App\Controllers\Admin\SertifikatController::index');
+    $routes->get('sertifikat/preview/(:num)', '\App\Controllers\Admin\SertifikatController::preview/$1');
 });

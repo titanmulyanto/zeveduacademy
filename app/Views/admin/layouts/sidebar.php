@@ -56,7 +56,7 @@
                 </details>
             </li>
             <li>
-                <a href="#">
+                <a href="<?= base_url('admin/sertifikat') ?>" class="<?= url_is('admin/sertifikat*') ? 'active' : '' ?>">
                     <i class="ph ph-certificate text-xl"></i>
                     Kelas & Sertifikat
                 </a>
