@@ -45,10 +45,15 @@
 
             <li class="menu-title text-sky-400 opacity-60 mt-4">Platform Settings</li>
             <li>
-                <a href="#">
-                    <i class="ph ph-browser text-xl"></i>
-                    CMS Landing Page
-                </a>
+                <details <?= url_is('admin/cms*') ? 'open' : '' ?>>
+                    <summary><i class="ph ph-browser text-xl"></i> CMS Landing Page</summary>
+                    <ul>
+                        <li><a href="<?= base_url('admin/cms/slider') ?>" class="<?= url_is('admin/cms/slider') ? 'active' : '' ?>">Slider Banner</a></li>
+                        <li><a href="<?= base_url('admin/cms/features') ?>" class="<?= url_is('admin/cms/features') ? 'active' : '' ?>">Fitur Unggulan</a></li>
+                        <li><a href="<?= base_url('admin/cms/faq') ?>" class="<?= url_is('admin/cms/faq') ? 'active' : '' ?>">FAQ</a></li>
+                        <li><a href="<?= base_url('admin/cms/testimoni') ?>" class="<?= url_is('admin/cms/testimoni') ? 'active' : '' ?>">Testimoni</a></li>
+                    </ul>
+                </details>
             </li>
             <li>
                 <a href="#">

@@ -16,4 +16,11 @@ $routes->group('admin', function($routes) {
     $routes->get('ujian', '\App\Controllers\Admin\UjianController::index');
     $routes->get('ujian/questions/(:num)', '\App\Controllers\Admin\UjianController::questions/$1');
     $routes->get('ujian/results', '\App\Controllers\Admin\UjianController::results');
+    
+    $routes->group('cms', function($routes) {
+        $routes->get('slider', '\App\Controllers\Admin\CmsController::slider');
+        $routes->get('features', '\App\Controllers\Admin\CmsController::features');
+        $routes->get('faq', '\App\Controllers\Admin\CmsController::faq');
+        $routes->get('testimoni', '\App\Controllers\Admin\CmsController::testimoni');
+    });
 });
