@@ -13,4 +13,7 @@ $routes->group('admin', function($routes) {
     $routes->get('transactions', '\App\Controllers\Admin\UserController::transactions');
     $routes->get('materi', '\App\Controllers\Admin\MateriController::index');
     $routes->get('materi/detail/(:num)', '\App\Controllers\Admin\MateriController::detail/$1');
+    $routes->get('ujian', '\App\Controllers\Admin\UjianController::index');
+    $routes->get('ujian/questions/(:num)', '\App\Controllers\Admin\UjianController::questions/$1');
+    $routes->get('ujian/results', '\App\Controllers\Admin\UjianController::results');
 });
