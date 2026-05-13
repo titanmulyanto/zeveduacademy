@@ -43,9 +43,10 @@
                 <i class="ph ph-hard-drive text-3xl"></i>
             </div>
             <div class="stat-title text-xs font-semibold uppercase tracking-wider">Storage Usage</div>
-            <div class="stat-value text-sm">4.2 GB / 10 GB</div>
+            <div class="stat-value text-sm"><?= $storage['used'] ?> / <?= $storage['limit'] ?></div>
             <div class="stat-desc">
-                <progress class="progress progress-primary w-full" value="42" max="100"></progress>
+                <progress class="progress progress-primary w-full" value="<?= $storage['percent'] ?>" max="100"></progress>
+                <div class="text-[10px] mt-1 text-right"><?= $storage['percent'] ?>% used</div>
             </div>
         </div>
     </div>
