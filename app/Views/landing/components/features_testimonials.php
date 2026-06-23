@@ -33,9 +33,9 @@
     <?php if (!empty($features_list)): ?>
         <?php foreach ($features_list as $index => $feature): ?>
             <?php
-            // Image path dari database
+            // Image path dari database - sudah termasuk prefix lengkap
             $imageSrc = !empty($feature['gambar'])
-                ? base_url('uploads/' . $feature['gambar'])
+                ? base_url($feature['gambar'])
                 : null;
 
             // Fallback images
@@ -111,10 +111,11 @@
                     $nama = esc($testi['nama'] ?? 'Alumni Zevedu');
                     $deskripsi = esc($testi['deskripsi'] ?? '');
                     $rating = max(1, min(10, (int)($testi['rating'] ?? 5)));
+                    // Path dari database - sudah termasuk prefix lengkap
                     $fotoProfil = !empty($testi['foto_profil'])
-                        ? base_url('uploads/' . $testi['foto_profil'])
+                        ? base_url($testi['foto_profil'])
                         : null;
-                    $fallbackAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200';
+                    $fallbackAvatar = 'https://ui-avatars.com/api/?name=' . urlencode($nama) . '&size=200&background=random';
                     ?>
                     <div class="carousel-card absolute w-full max-w-md bg-white p-6 rounded-3xl border border-slate-200/80 flex flex-col md:flex-row items-center md:items-start gap-5 overflow-hidden transition-all duration-500 ease-out"
                          data-index="<?= $index ?>">

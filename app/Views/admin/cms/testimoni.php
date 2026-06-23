@@ -43,7 +43,7 @@
                             <td>
                                 <div class="avatar">
                                     <div class="w-12 rounded-full border-2 border-primary">
-                                        <img src="<?= $testi['foto_profil'] ?>" alt="<?= esc($testi['nama']) ?>" />
+                                        <img src="<?= base_url($testi['foto_profil'] ?? '') ?>" alt="<?= esc($testi['nama']) ?>" />
                                     </div>
                                 </div>
                             </td>

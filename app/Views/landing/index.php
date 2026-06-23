@@ -142,7 +142,7 @@
                                 <div id="hero-slider" class="flex transition-transform duration-500 ease-out h-full">
                                     <?php foreach ($sliders as $index => $slider): ?>
                                     <div class="w-full flex-shrink-0 h-full flex items-center justify-center p-6 md:p-8">
-                                        <img src="<?= base_url('uploads/' . $slider['gambar']) ?>"
+                                        <img src="<?= base_url($slider['gambar']) ?>"
                                              alt="Banner <?= $index + 1 ?>"
                                              class="w-full h-full object-cover rounded-2xl"
                                              style="aspect-ratio: 1/1;"
@@ -283,7 +283,7 @@
                                     <!-- Product Image with 16:9 aspect ratio -->
                                     <div class="promo-img-container" style="aspect-ratio: 16/9; overflow: hidden;">
                                         <?php if (!empty($p['gambar'])): ?>
-                                            <img src="<?= base_url('uploads/' . $p['gambar']) ?>"
+                                            <img src="<?= base_url($p['gambar']) ?>"
                                                  alt="<?= esc($p['judul']) ?>"
                                                  class="promo-img-16-9"/>
                                         <?php else: ?>

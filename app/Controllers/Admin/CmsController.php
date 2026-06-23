@@ -309,7 +309,7 @@ class CmsController extends BaseController
                 }
                 $newName = 'testi_' . time() . '_' . $file->getRandomName();
                 $file->move($uploadPath, $newName);
-                $data['foto_profil'] = base_url('uploads/cms/testimoni/' . $newName);
+                $data['foto_profil'] = 'cms/testimoni/' . $newName;
             }
         }
 
