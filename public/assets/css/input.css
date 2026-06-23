@@ -1,14 +1,454 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* ========================================
+   ZEVDU ACADEMY - Design System
+   Theme: Blue (#2563EB) + Emerald (#10B981)
+   ======================================== */
+
 @theme {
-  --color-primary: #0369A1;        /* sky-700 (biru utama) */
+  /* Primary Colors - Blue */
+  --color-primary: #2563EB;        /* blue-600 - main brand color */
+  --color-primary-dark: #1D4ED8;   /* blue-700 - hover state */
+  --color-primary-light: #3B82F6;  /* blue-500 - light variant */
   --color-primary-content: #FFFFFF;
-  --color-secondary: #38BDF8;      /* sky-400 (biru langit) */
-  --color-accent: #0EA5E9;         /* sky-500 */
-  --color-neutral: #1E3A5F;        /* biru gelap (sidebar) */
-  --color-base-100: #F8FAFC;       /* background terang */
-  --color-base-200: #E2E8F0;       /* border / zebra stripe */
-  --color-base-300: #CBD5E1;
+
+  /* Secondary Colors - Emerald */
+  --color-secondary: #10B981;      /* emerald-500 - accent/success */
+  --color-secondary-dark: #059669; /* emerald-600 - hover */
+  --color-secondary-light: #34D399;/* emerald-400 - light */
+  --color-secondary-content: #FFFFFF;
+
+  /* Neutral / Base */
+  --color-neutral: #1E293B;        /* slate-800 - dark text */
+  --color-base-100: #FFFFFF;       /* white background */
+  --color-base-200: #F8FAFC;       /* slate-50 - subtle bg */
+  --color-base-300: #F1F5F9;       /* slate-100 - borders */
+  --color-base-content: #334155;   /* slate-700 - body text */
 }
 
+/* ========================================
+   Custom Components
+   ======================================== */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Course Card Hover Effect */
+.course-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.25);
+}
+
+/* Sidebar Active Indicator */
+.sidebar-link {
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  background: linear-gradient(180deg, #2563EB 0%, #10B981 100%);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.sidebar-link:hover::before,
+.sidebar-link.active::before {
+  opacity: 1;
+}
+
+/* Bottom Nav Active */
+.bottom-nav-item {
+  transition: all 0.2s ease;
+}
+.bottom-nav-item.active {
+  color: #2563EB;
+}
+.bottom-nav-item.active::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: #2563EB;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Tab Active Indicator */
+.tab-custom {
+  position: relative;
+  padding-bottom: 12px;
+}
+.tab-custom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #2563EB;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.tab-custom.active::after {
+  transform: scaleX(1);
+}
+
+/* Progress Bar Animation */
+.progress-animated {
+  animation: progress-pulse 2s ease-in-out infinite;
+}
+@keyframes progress-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Badge Gradient */
+.badge-gradient {
+  background: linear-gradient(135deg, #2563EB 0%, #10B981 100%);
+}
+
+/* Button Hover Glow */
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Card Glass Effect */
+.card-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+.ripple:active::after {
+  animation: ripple-effect 0.6s ease-out;
+}
+@keyframes ripple-effect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(100);
+    opacity: 0;
+  }
+}
+
+/* Empty State */
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Video Completion Badge */
+.completion-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #10B981;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Chat Bubble Styling */
+.chat-bubble-custom {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 16px;
+}
+.chat-bubble-custom.sent {
+  background: #2563EB;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+.chat-bubble-custom.received {
+  background: #F1F5F9;
+  color: #334155;
+  border-bottom-left-radius: 4px;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  transition: all 0.3s ease;
+  z-index: 40;
+}
+.fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.5);
+}
+
+/* Responsive Utilities */
+@layer utilities {
+  /* Safe area for mobile */
+  .safe-bottom {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+
+  /* Touch target minimum */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Text truncate with lines */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Mobile Bottom Nav Safe Area */
+@media (max-width: 1023px) {
+  .mobile-nav-safe {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ========================================
+   LANDING PAGE STYLES
+   ======================================== */
+
+/* Primary Color for Landing */
+.text-primary { color: #1152d4; }
+.bg-primary { background-color: #1152d4; }
+.bg-primary\/10 { background-color: rgba(17, 82, 212, 0.1); }
+.bg-primary\/5 { background-color: rgba(17, 82, 212, 0.05); }
+.bg-primary\/90 { background-color: rgba(17, 82, 212, 0.9); }
+.border-primary { border-color: #1152d4; }
+.hover\:bg-primary\/90:hover { background-color: rgba(17, 82, 212, 0.9); }
+.hover\:bg-primary\/5:hover { background-color: rgba(17, 82, 212, 0.05); }
+.hover\:text-primary:hover { color: #1152d4; }
+.shadow-primary\/30 { --tw-shadow-color: rgba(17, 82, 212, 0.3); }
+.shadow-primary\/20 { --tw-shadow-color: rgba(17, 82, 212, 0.2); }
+
+/* Accent Colors */
+.bg-accent-purple { background-color: #5a78f0; }
+.shadow-accent-purple\/20 { --tw-shadow-color: rgba(90, 120, 240, 0.2); }
+.bg-accent-cyan { background-color: #2cc0f1; }
+.shadow-accent-cyan\/20 { --tw-shadow-color: rgba(44, 192, 241, 0.2); }
+
+/* Promo Card Styles */
+.promo-card {
+  min-width: 320px;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  border: 1px solid #e7ebf3;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.promo-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(17,82,212,0.1);
+}
+.promo-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #f3f4f6;
+}
+.promo-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.promo-content h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0d121b;
+}
+.promo-content p {
+  margin: 0 0 16px;
+  color: #4c669a;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.price { margin-bottom: 16px; }
+.price-old {
+  text-decoration: line-through;
+  color: #9ca3af;
+  margin-right: 8px;
+}
+.price-new {
+  color: #1152d4;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.discount-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #1152d4;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  box-shadow: 0 3px 6px rgba(17,82,212,0.2);
+  z-index: 10;
+}
+
+/* Button dengan icon keranjang */
+.btn-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1152d4;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .25s ease, transform .2s ease;
+}
+.btn-buy:hover {
+  background: #0d40a8;
+  transform: translateY(-2px);
+}
+
+/* Hide scrollbar untuk Category Nav & Card Container */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Kategori Nav Pills */
+.nav-category-b {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4c669a;
+  text-decoration: none;
+  padding: 12px 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+  background: none;
+  border: none;
+}
+.nav-category-b::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #cbd5e1;
+  transition: background-color 0.25s ease;
+}
+.nav-category-b::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -1px;
+  left: 0;
+  background-color: #1152d4;
+  transition: width 0.3s ease;
+}
+.nav-category-b:hover,
+.nav-category-b.active {
+  color: #1152d4;
+}
+.nav-category-b:hover::after,
+.nav-category-b.active::after {
+  width: 100%;
+}
+
+/* Mobile Menu */
+#mobile-menu {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+#mobile-menu.open {
+  transform: translateX(0%);
+}
+
+/* Font Classes */
+.font-display { font-family: 'Lexend', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }

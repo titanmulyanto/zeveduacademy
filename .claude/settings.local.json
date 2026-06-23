@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL -c /tmp/cookies.txt -b /tmp/cookies.txt -i \"http://localhost/zeveduacademy/public/index.php/login\")"
+    ]
+  }
+}

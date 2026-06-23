@@ -193,3 +193,17 @@ CREATE TABLE sertifikat_kelas (
     FOREIGN KEY (id_user) REFERENCES users(id_user),
     FOREIGN KEY (id_produk) REFERENCES produk_pelatihan(id_produk)
 );
+
+-- ============================================
+-- Tabel kelas_admin (relasi admin/pemateri ke kelas)
+-- ============================================
+CREATE TABLE kelas_admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_produk INT NOT NULL,
+    id_user INT NOT NULL,
+    role VARCHAR(50) DEFAULT 'pemateri',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_kelas_admin (id_produk, id_user),
+    FOREIGN KEY (id_produk) REFERENCES produk_pelatihan(id_produk) ON DELETE CASCADE,
+    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE
+);
